@@ -14,14 +14,15 @@
    <font>
     <family>Times New Roman</family>
     <pointsize>12</pointsize>
+    <weight>75</weight>
     <bold>true</bold>
    </font>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Voting App</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QRadioButton" name="radioButton">
+   <widget class="QRadioButton" name="Choice_1">
     <property name="geometry">
      <rect>
       <x>120</x>
@@ -34,7 +35,7 @@
      <string>Isabella</string>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton_2">
+   <widget class="QRadioButton" name="Choice_2">
     <property name="geometry">
      <rect>
       <x>120</x>
@@ -47,7 +48,7 @@
      <string>Hannah</string>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton_3">
+   <widget class="QRadioButton" name="Choice_3">
     <property name="geometry">
      <rect>
       <x>120</x>
@@ -86,7 +87,7 @@
      <string>Enter your voter ID </string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="ID_input">
     <property name="geometry">
      <rect>
       <x>190</x>
@@ -109,7 +110,7 @@
      <string>Select one Candidate</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="Vote_btn">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -122,7 +123,7 @@
      <string>Vote</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="clear_btn">
     <property name="geometry">
      <rect>
       <x>200</x>
@@ -135,6 +136,19 @@
      <string>Clear</string>
     </property>
    </widget>
+   <widget class="QLabel" name="result_label">
+    <property name="geometry">
+     <rect>
+      <x>22</x>
+      <y>430</y>
+      <width>311</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -142,7 +156,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>33</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
