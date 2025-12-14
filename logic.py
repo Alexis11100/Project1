@@ -32,43 +32,45 @@ class Logic(QMainWindow, Ui_MainWindow):
         self.Choice_3.setChecked(False)
         self.button_group.setExclusive(True)
 
-
     def vote(self) -> None:
-        """Validates application and tells you who you voted for and the total of each candidate and total
-        altogether"""
-        numbers = str(self.ID_input.text())
-        if len(numbers) < 6 or len(numbers) > 6:
-            self.result_label.setStyleSheet("color: red;")
-            self.result_label.setText("ID must be 6 numbers long")
-        if not self.ID_input.text().isdigit():
-            self.result_label.setStyleSheet("color:red;")
-            self.result_label.setText("ID must be numbers")
-        if self.ID_input.text() == "":
+        """Validates application and tells you who you voted for and the totals"""
+        numbers = self.ID_input.text()
+
+        # Validation checks
+        if numbers == "":
             self.result_label.setStyleSheet("color:red;")
             self.result_label.setText("ID must not be blank")
+            return
+
+        elif not numbers.isdigit():
+            self.result_label.setStyleSheet("color:red;")
+            self.result_label.setText("ID must be numbers")
+            return
+
+        elif len(numbers) != 6:
+            self.result_label.setStyleSheet("color:red;")
+            self.result_label.setText("ID must be 6 numbers long")
+            return
+
         elif self.button_group.checkedButton() is None:
             self.result_label.setStyleSheet("color:red;")
             self.result_label.setText("You must select a candidate")
+            return
 
-        elif self.Choice_1.isChecked():
-            self.result_label.setStyleSheet("color:black;")
+        # If we reach here, all validation passed
+        if self.Choice_1.isChecked():
             self.Isabella += 1
-            self.Total_Votes += 1
-            self.result_label.setText(f'Voted Isabella \n'
-                                      f'Total Votes {self.Total_Votes} Isabella: {self.Isabella} Genji: {self.Genji} Hannah: {self.Hannah}'  )
-
+            candidate = "Isabella"
         elif self.Choice_2.isChecked():
-            self.result_label.setStyleSheet("color:black;")
             self.Hannah += 1
-            self.Total_Votes += 1
-            self.result_label.setText(f'Voted Hannah \n'
-                                      f'Total Votes {self.Total_Votes} Isabella: {self.Isabella} Genji: {self.Genji} Hannah: {self.Hannah}')
-
+            candidate = "Hannah"
         elif self.Choice_3.isChecked():
-            self.result_label.setStyleSheet("color:black;")
             self.Genji += 1
-            self.Total_Votes += 1
-            self.result_label.setText(f'Voted Genji \n'
-                                      f'Total Votes {self.Total_Votes} Isabella: {self.Isabella} Genji: {self.Genji} Hannah: {self.Hannah}')
+            candidate = "Genji"
 
-
+        self.Total_Votes += 1
+        self.result_label.setStyleSheet("color:black;")
+        self.result_label.setText(
+            f"Voted {candidate}\n"
+            f"Total Votes {self.Total_Votes} Isabella: {self.Isabella} Genji: {self.Genji} Hannah: {self.Hannah}"
+        )
